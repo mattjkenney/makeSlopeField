@@ -1,6 +1,6 @@
 from numpy import linspace
 from matplotlib import pyplot as plt
-from pandas import ExcelWriter, DataFrame
+
 
 class FieldLine():
 
@@ -45,10 +45,13 @@ plt.yticks(ys)
 plt.scatter(4,0, color='black')
 plt.show()
 
-##df = DataFrame({'x': [i.x for i in flds],
-##                'y': [i.y for i in flds],
-##                'slope': [i.slope() for i in flds]})
-##
-##with ExcelWriter(r'C:\Users\mattk\OneDrive\Desktop\dataset.xlsx') as writer:
-##    df.to_excel(writer)
+def export_xl(flds):
+    from pandas import ExcelWriter, DataFrame
+    
+    df = DataFrame({'x': [i.x for i in flds],
+                    'y': [i.y for i in flds],
+                    'slope': [i.slope() for i in flds]})
+
+    with ExcelWriter(r'C:\Users\mattk\OneDrive\Desktop\dataset.xlsx') as writer:
+        df.to_excel(writer)
 
